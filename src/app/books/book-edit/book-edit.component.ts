@@ -16,12 +16,13 @@ export class BookEditComponent implements OnInit {
         author: string;
         categories: string[];
         pages: number;
-        releaseDate: Date;
+        releaseDate: string;
         listOfCategories: string[]=['cat1','cat2','cat3','cat4'];
         index: number;
         books:Book[] =this.bookService.getBooks();
         borrowBookName: string;
         isBookBorrowed: boolean;
+        book: Book;
 
         constructor(private fb: FormBuilder,private dialogRef: MatDialogRef<BookEditComponent>,
           @Inject(MAT_DIALOG_DATA) private data: any,private bookService: BookService) {
@@ -50,6 +51,8 @@ export class BookEditComponent implements OnInit {
 
   }
   saveEditedBook(){
+    this.book = this.form.value;
+    this.bookService.saveEditedBook(this.book,this.index);
     this.dialogRef.close(this.form.value);
   }
 

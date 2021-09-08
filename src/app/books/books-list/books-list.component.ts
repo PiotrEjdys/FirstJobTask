@@ -15,7 +15,6 @@ export class BooksListComponent implements OnInit {
   detailDisplay: boolean = false;
   @Output() detailDisplayEmitter = new EventEmitter<{display:boolean, index: number}>();
   books: Book[];
-  book: Book;
   index:number;
 
   constructor(private bookService: BookService, private dialog: MatDialog) { }
@@ -45,9 +44,7 @@ export class BooksListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.book = result;
-      console.log(this.book);
-      this.saveBook();
+
     });
   }
   openEditDialog(index:number): void {
@@ -61,16 +58,7 @@ export class BooksListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.book = result;
-      this.saveEditedBook();
 
     });
-  }
-  saveBook(){
-    this.bookService.saveBook(this.book);
-  }
-  saveEditedBook(){
-    this.bookService.saveEditedBook(this.book,this.index);
   }
 }

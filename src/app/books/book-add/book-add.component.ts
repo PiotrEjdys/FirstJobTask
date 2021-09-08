@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Book } from '../book.model';
+import { BookService } from '../books.service';
 
 @Component({
   selector: 'app-book-add',
@@ -15,11 +17,12 @@ export class BookAddComponent implements OnInit {
         author: string;
         categories: string[];
         pages: number;
-        releaseDate: Date;
+        releaseDate: string;
         listOfCategories: string[]=['cat1','cat2','cat3','cat4'];
+        book: Book;
 
   constructor(private fb: FormBuilder,private dialogRef: MatDialogRef<BookAddComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any) {
+    @Inject(MAT_DIALOG_DATA) private data: any, private bookService: BookService) {
         this.isbn = data.isbn;
         this.title = data.title;
         this.author = data.author;
@@ -40,6 +43,8 @@ export class BookAddComponent implements OnInit {
 }
 
   saveAddedBook(){
+    this.book= this.form.value;
+    this.bookService.saveBook(this.book);
     this.dialogRef.close(this.form.value);
   }
 

@@ -4,17 +4,17 @@ export class Book {
     public author: string;
     public categories: string[];
     public pages: number;
-    public releaseDate: Date;
+    public releaseDate: string;
     public borrowBookName: string;
     public isBookBorrowed: boolean;
-    
+
     constructor(
         isbn: string,
         title: string,
         author: string,
         categories: string[],
         pages: number,
-        releaseDate: Date,
+        releaseDate: string,
         borrowBookName: string = '',
         isBookBorrowed: boolean = false
         ){
