@@ -42,12 +42,13 @@ export class BookEditComponent implements OnInit {
       isbn: [this.isbn],
       title: [this.title],
       author:[this.author],
-      // categories:[this.categories],
+      categories:[this.categories,[]],
       pages: [this.pages],
       releaseDate: [this.releaseDate],
       isBookBorrowed:[this.isBookBorrowed],
       borrowBookName: [this.borrowBookName]
   });
+  this.form.get('categories').setValue(this.bookService.getOneBook(this.data.index).categories);
 
   }
   saveEditedBook(){
@@ -55,5 +56,6 @@ export class BookEditComponent implements OnInit {
     this.bookService.saveEditedBook(this.book,this.index);
     this.dialogRef.close(this.form.value);
   }
+
 
 }

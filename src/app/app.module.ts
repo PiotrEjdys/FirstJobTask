@@ -16,6 +16,9 @@ import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { DatePipe } from '@angular/common';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [
   {path: 'book-detail', component: BookDetailComponent}
@@ -40,7 +43,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatSelectModule
   ],
   entryComponents:[
     BookAddComponent,

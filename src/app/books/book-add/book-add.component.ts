@@ -36,7 +36,7 @@ export class BookAddComponent implements OnInit {
       isbn: [this.isbn],
       title: [this.title],
       author:[this.author],
-      // categories:[this.categories],
+      categories:[this.categories,[]],
       pages: [this.pages],
       releaseDate: [this.releaseDate]
   });

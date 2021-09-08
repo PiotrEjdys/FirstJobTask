@@ -13,14 +13,13 @@
   <mat-label>Author:</mat-label>
   <input type="text" matInput formControlName="author">
 </mat-form-field><br>
-<!-- <mat-form-field>
+
+ <mat-form-field>
   <mat-label>Categories:</mat-label>
-  <li *ngFor="let cat of listOfCategories">
-  <mat-checkbox formControlName="categories">
-    {{cat}}
-  </mat-checkbox>
-</li>
-</mat-form-field><br> -->
+  <mat-select formControlName="categories" multiple>
+    <mat-option *ngFor="let cat of listOfCategories" [value]="cat">{{cat}}</mat-option>
+  </mat-select>
+ </mat-form-field><br>
 <mat-form-field>
   <mat-label>Pages:</mat-label>
   <input type="number" matInput formControlName="pages">
