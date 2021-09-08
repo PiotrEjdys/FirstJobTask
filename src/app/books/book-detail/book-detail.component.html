@@ -1,0 +1,35 @@
+<div class="row">
+    <h1>Book details</h1>
+    <ul class="list-group">
+        <li class="list-group-item">
+            ISBN: {{book.isbn}}
+        </li>
+        <li class="list-group-item">
+            Title: {{book.title}}
+        </li>
+        <li class="list-group-item">
+            Author: {{book.author}}
+        </li>
+        <li class="list-group-item">
+            Categories: <p *ngFor="let cat of book.categories"> {{cat}}</p>
+        </li>
+        <li class="list-group-item">
+            Pages: {{book.pages}}
+        </li>
+        <li class="list-group-item">
+            Release Date: {{book.releaseDate}}
+        </li>
+        <li class="list-group-item">
+            BorrowName: {{book.borrowBookName}}
+        </li>
+        <p *ngIf="!book.isBookBorrowed">
+            Choose user
+            <select class="form-control" [(ngModel)]="username">
+                <option *ngFor="let user of users" >{{user}}</option>
+            </select>
+            <button type="button" class="btn btn-success" (click)="borrowBook()">Borrow</button>
+        </p>
+    </ul>
+    <button type="button" class="btn btn-info" (click)="goBackFromDetails()">Back</button>
+</div>
+

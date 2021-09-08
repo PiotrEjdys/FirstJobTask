@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Add Book</h2>
+<mat-dialog-content [formGroup]="form">
+ <p>Please fill all the gaps.</p>
+  <mat-form-field>
+    <mat-label>ISBN:</mat-label>
+    <input type="text" matInput formControlName="isbn">
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Title:</mat-label>
+    <input type="text" matInput formControlName="title">
+</mat-form-field><br>
+<mat-form-field>
+  <mat-label>Author:</mat-label>
+  <input type="text" matInput formControlName="author">
+</mat-form-field><br>
+<!-- <mat-form-field>
+  <mat-label>Categories:</mat-label>
+  <li *ngFor="let cat of listOfCategories">
+  <mat-checkbox formControlName="categories">
+    {{cat}}
+  </mat-checkbox>
+</li>
+</mat-form-field><br> -->
+<mat-form-field>
+  <mat-label>Pages:</mat-label>
+  <input type="number" matInput formControlName="pages">
+</mat-form-field><br>
+<mat-form-field>
+  <mat-label>Release Date:</mat-label>
+  <input type="date" matInput formControlName="releaseDate">
+</mat-form-field>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+<button mat-button mat-dialog-close >Cancel</button>
+<button mat-button (click)="saveAddedBook()">Save</button>
+</mat-dialog-actions>

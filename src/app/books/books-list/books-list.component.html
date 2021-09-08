@@ -1,0 +1,11 @@
+<div class="row">
+    <h1>Books List</h1>
+    <ul class="list-group" *ngFor=" let book of books; let i = index">
+        <li class="list-group-item">{{book.title}}</li>
+        <button type="button" class="btn btn-primary" (click)="showDetails(i)">Show details</button>
+        <button type="button" class="btn btn-warning" (click)="openEditDialog(i)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="deleteBook(i)">Delete</button>
+    </ul>
+    <button type="button" class="btn btn-success" (click)="openAddDialog()">Add</button>
+</div>
+

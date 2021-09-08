@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Edit Book {{books[index].title}}</h2>
+<mat-dialog-content [formGroup]="form">
+ <p>Do changes</p>
+  <mat-form-field>
+    <mat-label>ISBN:</mat-label>
+    <input type="text" matInput formControlName="isbn" [(ngModel)]="books[index].isbn">
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>Title:</mat-label>
+    <input type="text" matInput formControlName="title" [(ngModel)]="books[index].title" >
+</mat-form-field><br>
+<mat-form-field>
+  <mat-label>Author:</mat-label>
+  <input type="text" matInput formControlName="author" [(ngModel)]="books[index].author">
+</mat-form-field><br>
+<!-- <mat-form-field>
+  <mat-label>Categories:</mat-label>
+  <li *ngFor="let cat of listOfCategories">
+  <mat-checkbox formControlName="categories">
+    {{cat}}
+  </mat-checkbox>
+</li>
+</mat-form-field><br> -->
+<mat-form-field>
+  <mat-label>Pages:</mat-label>
+  <input type="number" matInput formControlName="pages" [(ngModel)]="books[index].pages">
+</mat-form-field><br>
+<mat-form-field>
+  <mat-label>Release Date:</mat-label>
+  <input type="date" matInput formControlName="releaseDate" [(ngModel)]="books[index].releaseDate">
+</mat-form-field>
+<mat-form-field class="invisible">
+  <input  matInput formControlName="isBookBorrowed" [(ngModel)]="books[index].isBookBorrowed">
+</mat-form-field>
+<mat-form-field class="invisible">
+  <input  matInput formControlName="borrowBookName" [(ngModel)]="books[index].borrowBookName">
+</mat-form-field>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+<button mat-button mat-dialog-close >Cancel</button>
+<button mat-button (click)="saveEditedBook()">Save</button>
+</mat-dialog-actions>
