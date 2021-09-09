@@ -19,6 +19,8 @@ import { DatePipe } from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import { FilterAuthorPipe } from './filter-author.pipe';
+import { FilterTitlePipe } from './filter-title.pipe';
 
 const routes: Routes = [
   {path: 'book-detail', component: BookDetailComponent}
@@ -32,7 +34,9 @@ const routes: Routes = [
     BooksListComponent,
     HeaderComponent,
     BookAddComponent,
-    BookEditComponent
+    BookEditComponent,
+    FilterAuthorPipe,
+    FilterTitlePipe
 
   ],
   imports: [

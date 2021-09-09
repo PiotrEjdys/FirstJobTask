@@ -11,7 +11,7 @@ import { BookService } from '../books.service';
   styleUrls: ['./books-list.component.css']
 })
 export class BooksListComponent implements OnInit {
-
+  filteredAuthor: string = '';
   detailDisplay: boolean = false;
   @Output() detailDisplayEmitter = new EventEmitter<{display:boolean, index: number}>();
   books: Book[];
@@ -65,5 +65,13 @@ export class BooksListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
     });
+  }
+  confirmFilter(filterAuthor: string){
+    this.filteredAuthor= filterAuthor;
+    console.log(filterAuthor);
+
+  }
+  clearFilter(){
+this.filteredAuthor = '';
   }
 }

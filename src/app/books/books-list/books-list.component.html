@@ -1,6 +1,23 @@
 <div class="row">
     <h1>Books List</h1>
-    <ul class="list-group" *ngFor=" let book of books; let i = index">
+    <hr>
+    Find by:<select #status>
+      <option>title</option>
+      <option>author</option>
+      <option>isbn</option>
+    </select>
+    <input #filAuth type="text" name="filAuth">
+
+    <button type="button"class="btn btn-success" (click)="confirmFilter(filAuth.value)">
+    Confirm
+  </button>
+  <button type="button"class="btn btn-warning" (click)="clearFilter()">
+    Clear
+  </button>
+    <hr>
+
+
+    <ul class="list-group" *ngFor=" let book of books |filterAuthor:filteredAuthor:status.value; let i = index ">
         <li class="list-group-item">{{book.title}}</li>
         <button type="button" class="btn btn-primary" (click)="showDetails(i)">Show details</button>
         <button type="button" class="btn btn-warning" (click)="openEditDialog(i)">Edit</button>
