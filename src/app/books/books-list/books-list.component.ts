@@ -31,13 +31,16 @@ export class BooksListComponent implements OnInit {
 
   }
   deleteBook(index: number){
-    this.bookService.deleteBook(index);
+    if(confirm('Are u sure u want to delete book ' + this.books[index].title)){
+      this.bookService.deleteBook(index);
+    }
+
   }
   openAddDialog(): void {
     console.log('open');
 
     const dialogRef = this.dialog.open(BookAddComponent, {
-
+      disableClose:true,
       data: {
 
       }
@@ -53,6 +56,7 @@ export class BooksListComponent implements OnInit {
     this.index=index;
 
     const dialogRef = this.dialog.open(BookEditComponent, {
+      disableClose:true,
       data: {
         index: index
       }
