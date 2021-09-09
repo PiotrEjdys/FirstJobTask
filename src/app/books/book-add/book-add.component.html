@@ -4,14 +4,26 @@
   <mat-form-field>
     <mat-label>ISBN:</mat-label>
     <input type="text" matInput formControlName="isbn">
+  <span *ngIf="form.controls.isbn.invalid && (form.controls.isbn.dirty || form.controls.isbn.touched)">
+    <span class="text-danger" *ngIf="form.controls.isbn.errors?.required">ISBN is required </span>
+    <span class="text-danger" *ngIf="form.controls.isbn.errors?.pattern">ISBN must contain 13 numbers </span>
+  </span>
 </mat-form-field><br>
 <mat-form-field>
     <mat-label>Title:</mat-label>
     <input type="text" matInput formControlName="title">
+    <span *ngIf="form.controls.title.invalid && (form.controls.title.dirty || form.controls.title.touched)">
+    <span class="text-danger" *ngIf="form.controls.title.errors?.required">Title is required </span>
+    <span class="text-danger" *ngIf="form.controls.title.errors?.minLeght">Title must contain 3 characters </span>
+    </span>
 </mat-form-field><br>
 <mat-form-field>
   <mat-label>Author:</mat-label>
   <input type="text" matInput formControlName="author">
+  <span *ngIf="form.controls.author.invalid && (form.controls.author.dirty || form.controls.author.touched)">
+  <span class="text-danger" *ngIf="form.controls.author.errors?.required">Author is required </span>
+    <span class="text-danger" *ngIf="form.controls.author.errors?.minLeght">Author must contain 3 characters </span>
+    </span>
 </mat-form-field><br>
 
  <mat-form-field>
@@ -19,19 +31,30 @@
   <mat-select formControlName="categories" multiple>
     <mat-option *ngFor="let cat of listOfCategories" [value]="cat">{{cat}}</mat-option>
   </mat-select>
+  <span *ngIf="form.controls.categories.invalid && (form.controls.categories.dirty || form.controls.categories.touched)">
+  <span class="text-danger" *ngIf="form.controls.categories.errors?.required">Categories are required </span>
+  </span>
  </mat-form-field><br>
 <mat-form-field>
   <mat-label>Pages:</mat-label>
   <input type="number" matInput formControlName="pages">
+  <span *ngIf="form.controls.pages.invalid && (form.controls.pages.dirty || form.controls.pages.touched)">
+  <span class="text-danger" *ngIf="form.controls.pages.errors?.min">Pages must be at least 1 </span>
+  <span class="text-danger" *ngIf="form.controls.pages.errors?.required">Pages is required </span>
+</span>
 </mat-form-field><br>
 <mat-form-field>
   <mat-label>Release Date:</mat-label>
   <input type="date" matInput formControlName="releaseDate">
+  <span *ngIf="form.controls.releaseDate.invalid && (form.controls.releaseDate.dirty || form.controls.releaseDate.touched)">
+  <span class="text-danger" *ngIf="form.controls.releaseDate.errors?.required">Release date is required </span>
+  </span>
 </mat-form-field>
+
 
 
 </mat-dialog-content>
 <mat-dialog-actions>
 <button mat-button mat-dialog-close >Cancel</button>
-<button mat-button (click)="saveAddedBook()">Save</button>
+<button mat-button [disabled]="this.form.invalid" (click)="saveAddedBook()">Save</button>
 </mat-dialog-actions>

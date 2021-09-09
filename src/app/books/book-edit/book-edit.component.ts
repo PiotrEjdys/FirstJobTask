@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book } from '../book.model';
 import { BookService } from '../books.service';
@@ -39,12 +39,12 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      isbn: [this.isbn],
-      title: [this.title],
-      author:[this.author],
-      categories:[this.categories,[]],
-      pages: [this.pages],
-      releaseDate: [this.releaseDate],
+      isbn: [this.isbn,[Validators.required,Validators.pattern("\\d{13}")]],
+      title: [this.title,[Validators.required,Validators.minLength(3)]],
+      author:[this.author,[Validators.required, Validators.minLength(3)]],
+      categories:[this.categories,[Validators.required]],
+      pages: [this.pages,[Validators.min(1),Validators.required]],
+      releaseDate: [this.releaseDate,[Validators.required]],
       isBookBorrowed:[this.isBookBorrowed],
       borrowBookName: [this.borrowBookName]
   });
