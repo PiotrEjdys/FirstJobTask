@@ -34,8 +34,8 @@ export class BookAddComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       isbn: [this.isbn,[Validators.required,Validators.pattern("\\d{13}")]],
-      title: [this.title,[Validators.required,Validators.minLength(3)]],
-      author:[this.author,[Validators.required, Validators.minLength(3)]],
+      title: [this.title,[Validators.required,Validators.pattern('\\S{3,}')]],
+      author:[this.author,[Validators.required, Validators.pattern('\\S{3,}')]],
       categories:[this.categories,[Validators.required]],
       pages: [this.pages,[Validators.min(1),Validators.required]],
       releaseDate: [this.releaseDate,[Validators.required]]
