@@ -26,12 +26,14 @@ export class BooksListComponent implements OnInit {
     })
   }
   showDetails(index: number){
+    console.log(index);
+
     this.detailDisplay = !this.detailDisplay;
     this.detailDisplayEmitter.emit({display: this.detailDisplay, index: index});
 
   }
   deleteBook(index: number){
-    if(confirm('Are u sure u want to delete book ' + this.books[index].title)){
+    if(confirm('Are u sure u want to delete book ' + this.bookService.getOneBook(index).title)){
       this.bookService.deleteBook(index);
     }
 

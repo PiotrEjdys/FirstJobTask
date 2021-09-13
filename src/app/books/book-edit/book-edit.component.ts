@@ -32,9 +32,11 @@ export class BookEditComponent implements OnInit {
               this.categories = data.categories;
               this.pages = data.pages
               this.releaseDate = data.releaseDate;
-              this.index=data.index;
+              // this.index=data.index;
               this.borrowBookName = data.borrowBookName;
               this.isBookBorrowed = data.isBookBorrowed;
+              let bookIndex: number = this.books.indexOf(this.bookService.getOneBook(data.index));
+              this.index = bookIndex;
            }
 
   ngOnInit(): void {

@@ -19,6 +19,8 @@ export class BookDetailComponent implements OnInit{
 
   ngOnInit(): void {
     this.book = this.bookService.getOneBook(this.index);
+    // console.log(this.book.bookId);
+
   }
   goBackFromDetails(){
     this.detailDisplay = false;

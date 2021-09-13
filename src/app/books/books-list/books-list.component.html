@@ -19,9 +19,9 @@
 
     <ul class="list-group" *ngFor=" let book of books |filterAuthor:filteredAuthor:status.value; let i = index ">
         <li class="list-group-item">{{book.title}}</li>
-        <button type="button" class="btn btn-primary" (click)="showDetails(i)">Show details</button>
-        <button type="button" class="btn btn-warning" (click)="openEditDialog(i)">Edit</button>
-        <button type="button" class="btn btn-danger" (click)="deleteBook(i)">Delete</button>
+        <button type="button" class="btn btn-primary" (click)="showDetails(book.bookId)">Show details</button>
+        <button type="button" class="btn btn-warning" (click)="openEditDialog(book.bookId)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="deleteBook(book.bookId)">Delete</button>
     </ul>
     <button type="button" class="btn btn-success" (click)="openAddDialog()">Add</button>
 </div>
