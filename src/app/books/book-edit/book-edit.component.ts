@@ -7,57 +7,65 @@ import { BookService } from '../books.service';
 @Component({
   selector: 'app-book-edit',
   templateUrl: './book-edit.component.html',
-  styleUrls: ['./book-edit.component.css']
+  styleUrls: ['./book-edit.component.css'],
 })
 export class BookEditComponent implements OnInit {
-        form: FormGroup;
-        isbn: string;
-        title: string;
-        author: string;
-        categories: string[];
-        pages: number;
-        releaseDate: string;
-        listOfCategories: string[]=['cat1','cat2','cat3','cat4'];
-        index: number;
-        books:Book[] =this.bookService.getBooks();
-        borrowBookName: string;
-        isBookBorrowed: boolean;
-        book: Book;
+  form: FormGroup;
+  isbn: string;
+  title: string;
+  author: string;
+  categories: string[];
+  pages: number;
+  releaseDate: string;
+  listOfCategories: string[] = ['cat1', 'cat2', 'cat3', 'cat4'];
+  index: number;
+  books: Book[] = this.bookService.getBooks();
+  borrowBookName: string;
+  isBookBorrowed: boolean;
+  book: Book;
 
-        constructor(private fb: FormBuilder,private dialogRef: MatDialogRef<BookEditComponent>,
-          @Inject(MAT_DIALOG_DATA) private data: any,private bookService: BookService) {
-              this.isbn = data.isbn;
-              this.title = data.title;
-              this.author = data.author;
-              this.categories = data.categories;
-              this.pages = data.pages
-              this.releaseDate = data.releaseDate;
-              // this.index=data.index;
-              this.borrowBookName = data.borrowBookName;
-              this.isBookBorrowed = data.isBookBorrowed;
-              let bookIndex: number = this.books.indexOf(this.bookService.getOneBook(data.index));
-              this.index = bookIndex;
-           }
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<BookEditComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private bookService: BookService
+  ) {
+    this.isbn = data.isbn;
+    this.title = data.title;
+    this.author = data.author;
+    this.categories = data.categories;
+    this.pages = data.pages;
+    this.releaseDate = data.releaseDate;
+    // this.index=data.index;
+    this.borrowBookName = data.borrowBookName;
+    this.isBookBorrowed = data.isBookBorrowed;
+    let bookIndex: number = this.books.indexOf(
+      this.bookService.getOneBook(data.index)
+    );
+    this.index = bookIndex;
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      isbn: [this.isbn,[Validators.required,Validators.pattern("\\d{13}")]],
-      title: [this.title,[Validators.required,Validators.pattern('\\S{3,}')]],
-      author:[this.author,[Validators.required, Validators.pattern('\\S{3,}')]],
-      categories:[this.categories,[Validators.required]],
-      pages: [this.pages,[Validators.min(1),Validators.required]],
-      releaseDate: [this.releaseDate,[Validators.required]],
-      isBookBorrowed:[this.isBookBorrowed],
-      borrowBookName: [this.borrowBookName]
-  });
-  this.form.get('categories').setValue(this.bookService.getOneBook(this.data.index).categories);
-
+      isbn: [this.isbn, [Validators.required, Validators.pattern('\\d{13}')]],
+      title: [this.title, [Validators.required, Validators.pattern('\\S{3,}')]],
+      author: [
+        this.author,
+        [Validators.required, Validators.pattern('\\S{3,}')],
+      ],
+      categories: [this.categories, [Validators.required]],
+      pages: [this.pages, [Validators.min(1), Validators.required]],
+      releaseDate: [this.releaseDate, [Validators.required]],
+      isBookBorrowed: [this.isBookBorrowed],
+      borrowBookName: [this.borrowBookName],
+    });
+    this.form
+      .get('categories')
+      .setValue(this.bookService.getOneBook(this.data.index).categories);
   }
-  saveEditedBook(){
+  saveEditedBook() {
     this.book = this.form.value;
-    this.bookService.saveEditedBook(this.book,this.index);
+    this.bookService.saveEditedBook(this.book, this.index);
     this.dialogRef.close(this.form.value);
   }
-
-
 }

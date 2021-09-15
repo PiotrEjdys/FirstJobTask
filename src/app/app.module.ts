@@ -10,23 +10,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookService } from './books/books.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookAddComponent } from './books/book-add/book-add.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { FilterAuthorPipe } from './filter-author.pipe';
 import { FilterTitlePipe } from './filter-title.pipe';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 
 const routes: Routes = [
-  {path: '',component: BooksComponent},
-  {path: 'login', component: LoginComponent}
+  { path: '', component: BooksComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
@@ -40,8 +40,7 @@ const routes: Routes = [
     BookEditComponent,
     FilterAuthorPipe,
     FilterTitlePipe,
-    LoginComponent
-
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,13 +53,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatCheckboxModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
   ],
-  entryComponents:[
-    BookAddComponent,
-    BookEditComponent
-  ],
-  providers: [BookService,DatePipe,AuthService],
-  bootstrap: [AppComponent]
+  entryComponents: [BookAddComponent, BookEditComponent],
+  providers: [BookService, DatePipe, AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

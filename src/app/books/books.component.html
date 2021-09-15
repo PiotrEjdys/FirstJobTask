@@ -1,5 +1,11 @@
 <div class="row">
-    <app-books-list (detailDisplayEmitter)="showDetailsInfo($event)" *ngIf="!detailDisplayInfo"></app-books-list>
-    <app-book-detail [index]="indexParent" (detailDisplayEmitter)="showDetailsInfo($event)" *ngIf="detailDisplayInfo"></app-book-detail>
+  <app-books-list
+    (detailDisplayEmitter)="showDetailsInfo($event)"
+    *ngIf="!detailDisplayInfo"
+  ></app-books-list>
+  <app-book-detail
+    [index]="indexParent"
+    (detailDisplayEmitter)="showDetailsInfo($event)"
+    *ngIf="detailDisplayInfo"
+  ></app-book-detail>
 </div>
-

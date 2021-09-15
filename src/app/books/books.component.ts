@@ -3,16 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
 })
-export class BooksComponent implements OnInit {
+export class BooksComponent {
   detailDisplayInfo: boolean;
   indexParent: number;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-  showDetailsInfo(details){
+  showDetailsInfo(details) {
     this.detailDisplayInfo = details.display;
     this.indexParent = details.index;
   }
