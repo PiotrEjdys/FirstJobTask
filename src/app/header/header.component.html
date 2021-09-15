@@ -2,6 +2,9 @@
     <div class="container-fluid">
         <div class="navbar-header">
            <p class=" navbar-brand">Books</p>
+
         </div>
+        <button type="button" class="btn btn-default" style="float: right;" (click)="logout()" [ngClass]="{hidden: isLogged === false}">Logout</button>
+        <button class="btn btn-default" style="float: right;" routerLink="/login" [ngClass]="{hidden: isLogged === true}">Login</button>
     </div>
 </nav>

@@ -21,9 +21,12 @@ import { MatListModule } from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import { FilterAuthorPipe } from './filter-author.pipe';
 import { FilterTitlePipe } from './filter-title.pipe';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 const routes: Routes = [
-  {path: 'book-detail', component: BookDetailComponent}
+  {path: '',component: BooksComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -36,7 +39,8 @@ const routes: Routes = [
     BookAddComponent,
     BookEditComponent,
     FilterAuthorPipe,
-    FilterTitlePipe
+    FilterTitlePipe,
+    LoginComponent
 
   ],
   imports: [
@@ -56,7 +60,7 @@ const routes: Routes = [
     BookAddComponent,
     BookEditComponent
   ],
-  providers: [BookService,DatePipe],
+  providers: [BookService,DatePipe,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

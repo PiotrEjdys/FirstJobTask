@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/auth.service';
 import { BookAddComponent } from '../book-add/book-add.component';
 import { BookEditComponent } from '../book-edit/book-edit.component';
 import { Book } from '../book.model';
@@ -16,14 +17,19 @@ export class BooksListComponent implements OnInit {
   @Output() detailDisplayEmitter = new EventEmitter<{display:boolean, index: number}>();
   books: Book[];
   index:number;
+  isLogged: boolean;
 
-  constructor(private bookService: BookService, private dialog: MatDialog) { }
+  constructor(private bookService: BookService, private dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.books = this.bookService.getBooks();
     this.bookService.booksChanged.subscribe((books: Book[])=>{
       this.books=books;
-    })
+    });
+    this.isLogged = this.authService.loggedIn;
+    this.authService.changeLog.subscribe((log:boolean)=>{
+      this.isLogged = log;
+    });
   }
   showDetails(index: number){
     console.log(index);
